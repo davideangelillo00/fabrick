@@ -3,9 +3,9 @@
 
   <div class="fade-in-top d-flex-col align-items-center">
     <h4>Start your journey with us</h4>
-    <div class="actions d-flex-row gap-2">
-      <button class="btn btn-primary" routerLink="/login" aria-label="Login">Login</button>
-      <button class="btn btn-primary" routerLink="/register" aria-label="Register">Register</button>
+    <div class="actions gap-2" [ngClass]="{'w-100': isMobile, 'd-flex-col': isMobile, 'd-flex-row': !isMobile}">
+      <button class="btn btn-primary" type="button" routerLink="/login" aria-label="Login">Login</button>
+      <button class="btn btn-primary" type="button" routerLink="/register" aria-label="Register">Register</button>
     </div>
   </div>
 </div>

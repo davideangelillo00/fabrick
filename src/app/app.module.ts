@@ -11,6 +11,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
+
 @NgModule({
   declarations: [
     AppComponent,

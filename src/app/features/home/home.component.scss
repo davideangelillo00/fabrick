@@ -42,3 +42,12 @@
 		}
 	}
 }
+
+.actions {
+  &.w-100 {
+    >button {
+      width: 100%;
+      margin: .5em 0 .5em 0;
+    }
+  }
+}
