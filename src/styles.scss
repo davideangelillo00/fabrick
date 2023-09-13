@@ -5,3 +5,65 @@
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+@import "./variables.scss";
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Custom utility classes */
+.d-flex {
+  &-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &-col {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.justify-content {
+  &-center {
+    justify-content: center;
+  }
+
+  &-space-ar {
+    justify-content: space-around;
+  }
+
+  &-space-ev {
+    justify-content: space-evenly;
+  }
+};
+
+.w-100 {
+  width: 100%;
+}
+
+.align-items {
+  &-center {
+    align-items: center;
+  }
+}
+
+.gap-1em {
+  gap: 1em;
+}
+
+.gap-2em {
+  gap: 2em;
+}
+
+/* Bootstrap CSS overload */
+.btn-primary {
+  background-color: $accent-color;
+  border: none;
+
+  :hover {
+    background-color: $secondary-color;
+  }
+}

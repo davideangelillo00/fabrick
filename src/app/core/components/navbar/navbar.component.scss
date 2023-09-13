@@ -1,0 +1,14 @@
+@import "src/variables.scss";
+
+.navbar {
+  background-color: $accent-color;
+  width: 100vw;
+  height: 5em;
+  position: relative;
+
+  .logo {
+    height: 1.5em;
+    position: absolute;
+    left: 1em;
+  }
+}
