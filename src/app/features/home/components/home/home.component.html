@@ -4,10 +4,13 @@
   <div class="fade-in-top d-flex-col align-items-center">
     <h4>{{(storeService.loggedUser$ | async) ? 'Navigate our website' : 'Start your journey with us'}}</h4>
     <div class="actions gap-2" [ngClass]="{'w-100': isMobile, 'd-flex-col': isMobile, 'd-flex-row': !isMobile}">
-      <button class="btn btn-primary" type="button" routerLink="/register" aria-label="Register"
-        *ngIf="!(storeService.loggedUser$ | async)">Register</button>
-      <button class="btn btn-primary" type="button" routerLink="/profile" aria-label="Profile"
-        *ngIf="storeService.loggedUser$ | async">Profile</button>
+      <ng-container *ngIf="storeService.loggedUser$ | async; else registerButton">
+        <button class="btn btn-primary" type="button" routerLink="/profile" aria-label="Profile">Profile</button>
+        <button class="btn btn-primary" type="button" aria-label="Log-off" (click)="logoff()">Log off</button>
+      </ng-container>
+      <ng-template #registerButton>
+        <button class="btn btn-primary" type="button" routerLink="/register" aria-label="Register">Register</button>
+      </ng-template>
     </div>
   </div>
 </div>

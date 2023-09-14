@@ -22,4 +22,7 @@ export class HomeComponent {
     this.isMobile = this.deviceDetectorService.isMobile();
   }
 
+  public logoff(): void {
+    this.storeService.setLoggedUser(null);
+  }
 }

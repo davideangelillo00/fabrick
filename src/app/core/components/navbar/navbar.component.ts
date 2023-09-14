@@ -16,4 +16,8 @@ export class NavbarComponent {
   ) {
     this.isMobile = this.deviceDetectorService.isMobile();
   }
+
+  public logoff(): void {
+    this.storeService.setLoggedUser(null);
+  }
 }
