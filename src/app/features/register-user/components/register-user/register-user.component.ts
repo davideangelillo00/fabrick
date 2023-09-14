@@ -7,7 +7,6 @@ import { Select } from 'src/app/shared/interfaces/select';
 import { User, UserGender } from 'src/app/shared/interfaces/user';
 import { emailValidator, fullNameValidator } from 'src/app/core/utils/common-functions';
 import { ApiService } from 'src/app/core/services/api.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { StoreService } from 'src/app/core/services/store.service';
 import { RegistrationErrorsEnum } from '../../enums/registration-errors.enum';
 import { Router } from '@angular/router';
