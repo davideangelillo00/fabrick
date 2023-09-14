@@ -6,15 +6,15 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadComponent: () => import('./features/home/home.component').then(comp => comp.HomeComponent)
+    loadComponent: () => import('./features/home/components/home/home.component').then(comp => comp.HomeComponent)
   },
   {
     path: 'register',
-    loadComponent: () => import('./features/register-user/register-user.component').then(comp => comp.RegisterUserComponent),
+    loadComponent: () => import('./features/register-user/components/register-user/register-user.component').then(comp => comp.RegisterUserComponent),
   },
   {
     path: 'login',
-    loadComponent: () => import('./features/login/login.component').then(comp => comp.LoginComponent),
+    loadComponent: () => import('./features/login/components/login/login.component').then(comp => comp.LoginComponent),
   }
 ];
 

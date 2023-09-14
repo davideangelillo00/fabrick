@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment.development';
 export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (request.url.includes(environment.serverEndpoint)) {
-      request.headers.append('Authorization', `Bearer ${environment.token}`);
+      request = request.clone({setHeaders: {authorization: `Bearer ${environment.token}`}});
     }
     return next.handle(request);
   }

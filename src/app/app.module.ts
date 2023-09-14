@@ -26,7 +26,7 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
     ButtonsModule.forRoot()
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

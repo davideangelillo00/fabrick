@@ -12,5 +12,4 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class LoginComponent {
   x: FormControl = new FormControl();
-  y = this.x.valueChanges.subscribe(val => console.log(val))
 }

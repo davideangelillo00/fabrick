@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './input/input.component';
+import { CommonModule } from '@angular/common';
+import { SelectComponent } from './select/select.component';
 
 const components = [
-  InputComponent
+  InputComponent,
+  SelectComponent
 ];
 
 @NgModule({
@@ -11,7 +14,8 @@ const components = [
     ...components
   ],
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   exports: [
     ...components

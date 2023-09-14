@@ -16,54 +16,58 @@
 /* Custom utility classes */
 .d-flex {
   &-row {
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
   }
 
   &-col {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
   }
 }
 
 .justify-content {
   &-center {
-    justify-content: center;
+    justify-content: center !important;
   }
 
   &-space-ar {
-    justify-content: space-around;
+    justify-content: space-around !important;
   }
 
   &-space-ev {
-    justify-content: space-evenly;
+    justify-content: space-evenly !important;
   }
 };
 
 .w-100 {
-  width: 100%;
+  width: 100% !important;
 }
 
 .align-items {
   &-center {
-    align-items: center;
+    align-items: center !important;
   }
 }
 
 .gap-1em {
-  gap: 1em;
+  gap: 1em !important;
 }
 
 .gap-2em {
-  gap: 2em;
+  gap: 2em !important;
+}
+
+.wrapper {
+  margin: 1em;
 }
 
 /* Bootstrap CSS overload */
 .btn-primary {
-  background-color: $accent-color;
-  border: none;
+  background-color: $accent-color !important;
+  border: none !important;
 
   :hover {
-    background-color: $secondary-color;
+    background-color: $secondary-color !important;
   }
 }

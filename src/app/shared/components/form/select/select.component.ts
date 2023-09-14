@@ -1,28 +1,27 @@
 import { Component, forwardRef, Input, OnInit, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { takeUntil, Subject } from 'rxjs';
-
-type InputType = 'text' | 'number' | 'email' | 'password';
+import { Subject, takeUntil } from 'rxjs';
+import { Select } from 'src/app/shared/interfaces/select';
 
 @Component({
-  selector: 'fb-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  selector: 'fb-select',
+  templateUrl: './select.component.html',
+  styleUrls: ['./select.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputComponent),
+      useExisting: forwardRef(() => SelectComponent),
       multi: true,
     },
   ],
 })
-export class InputComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class SelectComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() isDisabled: boolean = false;
   @Input() label!: string;
-  @Input() placeholder: string = '';
+  @Input() placeholder: string = 'Seleziona';
   @Input() uniqueId: string = '';
-  @Input() type: InputType = 'text';
   @Input() isRequired: boolean = false;
+  @Input() options: Select[] = [];
   public onChange: (value: string | null) => void = () => {};
   public onTouched: () => void = () => {};
   public value: FormControl<string | null> = new FormControl(null);
