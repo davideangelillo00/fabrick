@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'fb-navbar',
@@ -8,8 +9,10 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class NavbarComponent {
   public isMobile: boolean;
+
   constructor(
-    private deviceDetectorService: DeviceDetectorService
+    public storeService: StoreService,
+    private deviceDetectorService: DeviceDetectorService,
   ) {
     this.isMobile = this.deviceDetectorService.isMobile();
   }

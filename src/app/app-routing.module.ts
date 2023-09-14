@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ApplicationConfig } from '@angular/platform-browser';
-import { RouterModule, Routes, provideRouter } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -12,10 +11,6 @@ const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./features/register-user/components/register-user/register-user.component').then(comp => comp.RegisterUserComponent),
   },
-  {
-    path: 'login',
-    loadComponent: () => import('./features/login/components/login/login.component').then(comp => comp.LoginComponent),
-  }
 ];
 
 @NgModule({

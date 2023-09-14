@@ -4,10 +4,12 @@
   <button type="button" type="menu" class="btn btn-primary" aria-label="Home" routerLink="/">
     Home
   </button>
-  <button type="button" type="menu" class="btn btn-primary" aria-label="Login" routerLink="/login">
-    Login
-  </button>
-  <button type="button" type="menu" class="btn btn-primary" aria-label="Register" routerLink="/register">
+  <button type="button" type="menu" class="btn btn-primary" aria-label="Register" routerLink="/register"
+    *ngIf="!(storeService.loggedUser$ | async)">
     Register
+  </button>
+  <button type="button" type="menu" class="btn btn-primary" aria-label="Profile" routerLink="/profile"
+    *ngIf="storeService.loggedUser$ | async">
+    My Profile
   </button>
 </section>

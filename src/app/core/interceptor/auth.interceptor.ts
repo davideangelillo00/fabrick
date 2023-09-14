@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (request.url.includes(environment.serverEndpoint)) {
-      request = request.clone({setHeaders: {authorization: `xxxBearer ${environment.token}`}});
+      request = request.clone({setHeaders: {authorization: `Bearer ${environment.token}`}});
     }
     return next.handle(request).pipe(
       tap({
@@ -39,6 +39,8 @@ export class AuthInterceptor implements HttpInterceptor {
     switch (error.status) {
       case 401:
         return 'Insufficient permission to proceed';
+      case 422:
+        return 'Email already registered';
       default:
         return error.message || 'Please try again later';
     }

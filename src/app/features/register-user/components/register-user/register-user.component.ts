@@ -49,7 +49,7 @@ export class RegisterUserComponent {
       status: 'active',
     } as Omit<User, 'id'>).subscribe((response: User) => {
         this.storeService.setLoggedUser(response);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/']);
     });
   }
 
