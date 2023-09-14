@@ -1,0 +1,37 @@
+@import "src/variables.scss";
+
+.user-details {
+  &__icon {
+    height: 8em;
+    width: auto;
+    object-fit: contain;
+    filter: invert(10%) sepia(27%) saturate(5624%) hue-rotate(208deg) brightness(90%) contrast(109%);
+  }
+
+  &__fields {
+    gap: 2em;
+    align-items: center;
+    min-width: 40%;
+  }
+}
+
+.fields {
+  &__label {
+    margin: 0;
+
+    &--block {
+      display: block;
+    }
+  }
+}
+
+.edit-button {
+  &__icon {
+    font-size: 1.1em;
+    color: $primary-color;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

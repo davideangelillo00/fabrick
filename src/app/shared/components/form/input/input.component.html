@@ -1,8 +1,9 @@
 <div class="input">
-  <label [for]="uniqueId" class="form-label" *ngIf="label" [attr.aria-description]="label">
+  <label [for]="uniqueId" class="form-label" *ngIf="label" [attr.aria-details]="label">
     {{label}}
     <span *ngIf="isRequired" class="form-label__required">*</span>
   </label>
-  <input class="form-control" [type]="type" [id]="uniqueId" [formControl]="value" [placeholder]="placeholder" [attr.aria-label]="label" [required]="isRequired">
-  <p *ngIf="errorTooltip" [attr.aria-description]="'error: ' + errorTooltip" class="input__error">{{errorTooltip}}</p>
+  <input class="form-control" [type]="type" [id]="uniqueId" [formControl]="value" [placeholder]="placeholder"
+    [attr.aria-label]="label" [required]="isRequired" [attr.aria-required]="isRequired">
+  <p *ngIf="errorTooltip" [attr.aria-errormessage]="errorTooltip" class="input__error">{{errorTooltip}}</p>
 </div>

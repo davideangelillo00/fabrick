@@ -13,6 +13,10 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
+i {
+  color: $accent-color;
+}
+
 /* Custom utility classes */
 .d-flex {
   &-row {
@@ -38,15 +42,39 @@
   &-space-ev {
     justify-content: space-evenly !important;
   }
+
+  &-space-bt {
+    justify-content: space-between !important;
+  }
 };
 
 .w-100 {
   width: 100% !important;
 }
 
+.ml-1em {
+  margin-left: 1em;
+}
+
+.ml-2em {
+  margin-left: 2em;
+}
+
+.ml-3em {
+  margin-left: 3em;
+}
+
+.mt-1em {
+  margin-top: 1em;
+}
+
 .align-items {
   &-center {
     align-items: center !important;
+  }
+
+  &-start {
+    align-items: flex-start !important;
   }
 }
 
@@ -64,10 +92,10 @@
 
 /* Bootstrap CSS overload */
 .btn-primary {
-  background-color: $accent-color !important;
-  border: none !important;
+  background-color: $accent-color;
+  border: none;
 
-  :hover {
-    background-color: $secondary-color !important;
+  &:hover {
+    background-color: $secondary-color;
   }
 }

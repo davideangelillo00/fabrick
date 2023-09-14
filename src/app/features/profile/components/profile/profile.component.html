@@ -1,0 +1,31 @@
+<div class="user-details" [ngClass]="{'d-flex-col': isMobile, 'd-flex-row justify-content-space-bt align-items-center': !isMobile}">
+  <img src="/assets/user.png" alt="User icon" aria-details="User icon" class="user-details__icon">
+  <div class="user-details__fields" [ngClass]="isMobile ? 'd-flex-col align-items-start gap-1em mt-1em' : 'd-flex-row justify-content-space-bt'">
+    <ng-container *ngIf="!isEdit">
+      <p class="fields__label">
+        <strong [ngClass]="{'fields__label--block': !isMobile}">ID: </strong>
+        <span>{{user.id}}</span>
+      </p>
+      <p class="fields__label">
+        <strong [ngClass]="{'fields__label--block': !isMobile}">Name: </strong>
+        <span>{{user.name}}</span>
+      </p>
+      <p class="fields__label">
+        <strong [ngClass]="{'fields__label--block': !isMobile}">Email: </strong>
+        <span>{{user.email}}</span>
+      </p>
+      <p class="fields__label">
+        <strong [ngClass]="{'fields__label--block': !isMobile}">Gender: </strong>
+        <span>{{user.gender}}</span>
+      </p>
+      <p class="fields__label">
+        <strong [ngClass]="{'fields__label--block': !isMobile}">Status: </strong>
+        <span>{{user.status}}</span>
+      </p>
+    </ng-container>
+  </div>
+  <button class="btn btn-primary edit-button" type="button" aria-label="Edit profile" [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}">
+    <i class="bi bi-pencil-square edit-button__icon"></i>
+    Edit
+  </button>
+</div>

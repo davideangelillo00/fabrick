@@ -11,7 +11,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  public findUser(id: string): Observable<User> {
+  public findUser(id: number): Observable<User> {
     return this.http.get<User>(`${environment.serverEndpoint}/public/v2/users/${id}`);
   }
 

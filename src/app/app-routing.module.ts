@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./features/register-user/components/register-user/register-user.component').then(comp => comp.RegisterUserComponent),
   },
+  {
+    path: 'profile',
+    loadComponent: () => import('./features/profile/components/profile/profile.component').then(comp => comp.ProfileComponent),
+  },
 ];
 
 @NgModule({
