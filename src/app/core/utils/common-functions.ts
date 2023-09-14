@@ -7,5 +7,5 @@ export function emailValidator(control: AbstractControl): ValidationErrors | nul
 }
 
 export function fullNameValidator(control: AbstractControl): ValidationErrors | null {
-  return control?.value?.split(' ')?.filter(Boolean)?.length > 1 ? null : { fullNameValidation: true };
+  return !!control.value && control.value.split(' ')?.filter(Boolean)?.length < 2 ? { fullNameValidation: true } : null;
 }

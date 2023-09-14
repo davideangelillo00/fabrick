@@ -23,6 +23,7 @@ export class InputComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() uniqueId: string = '';
   @Input() type: InputType = 'text';
   @Input() isRequired: boolean = false;
+  @Input() errorTooltip: string | null = null;
   public onChange: (value: string | null) => void = () => {};
   public onTouched: () => void = () => {};
   public value: FormControl<string | null> = new FormControl(null);

@@ -7,3 +7,11 @@
     color: $secondary-color;
   }
 }
+
+.input {
+  &__error {
+    color: $secondary-color;
+    text-align: start;
+    margin: .5em 0 0 0;
+  }
+}

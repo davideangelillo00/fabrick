@@ -1,8 +1,8 @@
-<label [for]="uniqueId" class="form-label" *ngIf="label">
+<label [for]="uniqueId" class="form-label" *ngIf="label" [attr.aria-description]="label">
   {{label}}
   <span *ngIf="isRequired" class="form-label__required">*</span>
 </label>
-<select class="form-select" aria-label="Default select example" [formControl]="value">
-  <option class="form-select__placeholder" value=null>{{placeholder}}</option>
+<select class="form-select" aria-label="Default select example" [formControl]="value" [attr.aria-label]="label">
+  <option class="form-select__placeholder" [ngValue]="null">{{placeholder}}</option>
   <option *ngFor="let option of options" [value]="option.value">{{option.text}}</option>
 </select>

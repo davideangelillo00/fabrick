@@ -8,6 +8,9 @@ import { User, UserGender } from 'src/app/shared/interfaces/user';
 import { emailValidator, fullNameValidator } from 'src/app/core/utils/common-functions';
 import { ApiService } from 'src/app/core/services/api.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { StoreService } from 'src/app/core/services/store.service';
+import { RegistrationErrorsEnum } from '../../enums/registration-errors.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'fb-register-user',
@@ -20,8 +23,18 @@ export class RegisterUserComponent {
   public form: FormGroup<RegisterForm>;
   public genders: Select[];
 
+  public get fullNameErrorLabel(): string | null {
+    return this.form?.controls.name.errors?.['fullNameValidation'] ? RegistrationErrorsEnum.INVALID_FULL_NAME : null;
+  }
+
+  public get emailErrorLabel(): string | null {
+    return this.form?.controls.email.errors?.['emailValidation'] ? RegistrationErrorsEnum.INVALID_EMAIL : null;
+  }
+
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private storeService: StoreService,
+    private router: Router
   ) {
     this.form = this.initForm();
     this.genders = [
@@ -35,13 +48,9 @@ export class RegisterUserComponent {
     this.apiService.registerUser({
       ...this.form.value,
       status: 'active',
-    } as Omit<User, 'id'>).subscribe({
-      next: (response: User) => {
-        console.log(response);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.error(error);
-      }
+    } as Omit<User, 'id'>).subscribe((response: User) => {
+        this.storeService.setLoggedUser(response);
+        this.router.navigate(['/profile']);
     });
   }
 
@@ -49,7 +58,7 @@ export class RegisterUserComponent {
     return new FormGroup<RegisterForm>({
       name: new FormControl('', {validators: [Validators.required, fullNameValidator], nonNullable: true}),
       email: new FormControl('', {validators: [Validators.required, emailValidator], nonNullable: true}),
-      gender: new FormControl('male', {validators: [Validators.required], nonNullable: true}),
+      gender: new FormControl('male', {validators: [Validators.required]}),
     });
   }
 }

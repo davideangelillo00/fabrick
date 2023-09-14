@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ButtonsModule.forRoot()
+    SharedModule,
+    ButtonsModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
