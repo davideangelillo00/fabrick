@@ -16,6 +16,9 @@ export class StoreService {
     return this._loggedUser$.asObservable();
   }
 
+  /**
+   * Loader status, must be > 0 to be visible
+   */
   public get loader$(): Observable<number> {
     return this._loader$.asObservable();
   }
@@ -28,10 +31,16 @@ export class StoreService {
     this._loggedUser$.next(user);
   }
 
+  /**
+   * Increments the loader counter
+   */
   public showLoader(): void {
     this._loader$.next(this._loader$.value + 1);
   }
 
+  /**
+   * Decrements the loader counter (cannot be < 0)
+   */
   public hideLoader(): void {
     if (this._loader$.value > 0) {
       this._loader$.next(this._loader$.value - 1);

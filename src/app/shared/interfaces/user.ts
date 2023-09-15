@@ -1,10 +1,9 @@
-export type UserGender = 'male' | 'female';
-export type UserStatus = 'active' | 'inactive';
+import { UserGenderEnum, UserStatusEnum } from "../enums/user.enum";
 
 export interface User {
   id?: number;
   name: string;
   email: string;
-  gender: UserGender;
-  status: UserStatus
+  gender: UserGenderEnum;
+  status: UserStatusEnum;
 }

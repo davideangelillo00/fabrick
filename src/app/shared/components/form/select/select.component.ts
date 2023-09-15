@@ -16,11 +16,17 @@ import { Select } from 'src/app/shared/interfaces/select';
   ],
 })
 export class SelectComponent implements OnInit, OnDestroy, ControlValueAccessor {
+  /** When true, input is disabled */
   @Input() isDisabled: boolean = false;
+  /** Label shown above the input field */
   @Input() label!: string;
+  /** Placeholder shown inside the input field */
   @Input() placeholder: string = 'Seleziona';
+  /** Id of the input */
   @Input() uniqueId: string = '';
+  /** When true, the input is required and a * is shown over the label */
   @Input() isRequired: boolean = false;
+  /** Option list in the dropdown */
   @Input() options: Select[] = [];
   public onChange: (value: string | null) => void = () => {};
   public onTouched: () => void = () => {};
@@ -30,7 +36,7 @@ export class SelectComponent implements OnInit, OnDestroy, ControlValueAccessor 
   public ngOnInit(): void {
     this.value.valueChanges.pipe(takeUntil(this.unsubscriber$)).subscribe((value: string | number | null) => {
       this.onChange(this.value.value);
-      this.onTouched!();
+      this.onTouched();
     });
     this.uniqueId = this.uniqueId || `${this.label || 'id'}-${Date.now()}`;
   }

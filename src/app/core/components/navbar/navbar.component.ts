@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { StoreService } from '../../services/store.service';
 import { Router } from '@angular/router';
+import { RoutesEnum } from '../../enums/routes.enum';
 
 @Component({
   selector: 'fb-navbar',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   public isMobile: boolean;
+  public routes = RoutesEnum;
 
   constructor(
     public storeService: StoreService,
@@ -21,6 +23,6 @@ export class NavbarComponent {
 
   public logout(): void {
     this.storeService.setLoggedUser(null);
-    this.router.navigate(['/']);
+    this.router.navigate([RoutesEnum.HOME]);
   }
 }

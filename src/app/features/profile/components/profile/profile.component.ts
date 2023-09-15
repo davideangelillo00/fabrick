@@ -11,6 +11,7 @@ import { RegistrationErrorsEnum } from 'src/app/features/register-user/enums/reg
 import { RegisterForm } from 'src/app/features/register-user/interfaces/register-form';
 import { emailValidator, fullNameValidator, getGenders } from 'src/app/core/utils/common-functions';
 import { Select } from 'src/app/shared/interfaces/select';
+import { UserStatusEnum } from 'src/app/shared/enums/user.enum';
 
 @Component({
   selector: 'fb-profile',
@@ -37,7 +38,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   public get isDisabledProfile(): boolean {
-    return this.user?.status === 'inactive';
+    return this.user?.status === UserStatusEnum.INACTIVE;
   }
 
   constructor(
@@ -81,7 +82,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public toggleProfileEnabled(): void {
     this.apiService.updateUser({
       id: this.user.id,
-      status: this.user.status === 'active' ? 'inactive' : 'active'
+      status: this.user.status === UserStatusEnum.ACTIVE
+        ? UserStatusEnum.INACTIVE
+        : UserStatusEnum.ACTIVE
     }).subscribe((user: User) => this.storeService.setLoggedUser(user));
   }
 
@@ -96,7 +99,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     return new FormGroup<RegisterForm>({
       name: new FormControl('', {validators: [Validators.required, fullNameValidator], nonNullable: true}),
       email: new FormControl('', {validators: [Validators.required, emailValidator], nonNullable: true}),
-      gender: new FormControl('male', {validators: [Validators.required]}),
+      gender: new FormControl(this.genders[0].value, {validators: [Validators.required]}),
     })
   }
 }

@@ -18,12 +18,14 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private modalsService: ModalsService) {}
 
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    /** Adding the Bearer token used to call https://gorest.co.in/ services */
     if (request.url.includes(environment.serverEndpoint)) {
       request = request.clone({setHeaders: {authorization: `Bearer ${environment.token}`}});
     }
     return next.handle(request).pipe(
       tap({
         error: (error: HttpErrorResponse) => {
+          /** Generic error management */
           const text = this.errorMessageMapper(error);
           this.modalsService.openModal(ModalComponent, {
             title: 'Oops, an error occurred!',

@@ -1,8 +1,8 @@
 import { FormControl } from '@angular/forms';
-import { UserGender } from 'src/app/shared/interfaces/user';
+import { UserGenderEnum } from 'src/app/shared/enums/user.enum';
 
 export interface RegisterForm {
   name: FormControl<string>;
   email: FormControl<string>;
-  gender: FormControl<UserGender | null>;
+  gender: FormControl<UserGenderEnum | null>;
 }

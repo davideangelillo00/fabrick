@@ -4,6 +4,6 @@
     <span *ngIf="isRequired" class="form-label__required">*</span>
   </label>
   <input class="form-control" [type]="type" [id]="uniqueId" [formControl]="value" [placeholder]="placeholder"
-    [attr.aria-label]="label" [required]="isRequired" [attr.aria-required]="isRequired" [attr.aria-invalid]="value.invalid">
+    [attr.aria-label]="label" [required]="isRequired" [attr.aria-required]="isRequired">
   <p *ngIf="errorTooltip" [attr.aria-errormessage]="errorTooltip" class="input__error">{{errorTooltip}}</p>
 </div>

@@ -2,9 +2,9 @@
   <h2 class="register-page__title">Register</h2>
   <form [formGroup]="form" class="register-page__form d-flex-col gap-1em">
     <fb-input [label]="'Name & Last Name'" [placeholder]="'Type here'" [isRequired]="true" formControlName="name"
-      [errorTooltip]="fullNameErrorLabel"></fb-input>
+      [errorTooltip]="getErrorLabel('name')"></fb-input>
     <fb-input [label]="'Email'" [placeholder]="'your.email@email.com'" [isRequired]="true" formControlName="email"
-      [type]="'email'" [errorTooltip]="emailErrorLabel"></fb-input>
+      [type]="'email'" [errorTooltip]="getErrorLabel('email')"></fb-input>
     <fb-select [label]="'Gender'" [placeholder]="'Select your gender'" [isRequired]="true" [options]="genders"
       formControlName="gender"></fb-select>
     <button type="submit" class="btn btn-primary" [disabled]="form.invalid" aria-label="Register" (click)="register()">Register</button>

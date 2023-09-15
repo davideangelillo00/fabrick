@@ -1,14 +1,15 @@
 <section class="d-flex justify-content-center navbar gap-2em">
-  <img src="/assets/logo-md.png" alt="Fabrick logo" class="logo" *ngIf="!isMobile">
+  <img src="/assets/logo-md.png" alt="Fabrick logo" class="logo" *ngIf="!isMobile" [routerLink]="routes.HOME"
+    aria-details="Fabrick Logo">
 
-  <button type="menu" class="btn btn-primary" aria-label="Home" routerLink="/">
+  <button type="menu" class="btn btn-primary" aria-label="Home" [routerLink]="routes.HOME">
     Home
   </button>
   <ng-container *ngIf="storeService.loggedUser$ | async; else registerButton">
-    <button type="menu" class="btn btn-primary" aria-label="Profile" routerLink="/profile">My Profile</button>
+    <button type="menu" class="btn btn-primary" aria-label="Profile" [routerLink]="routes.PROFILE">My Profile</button>
     <button type="menu" class="btn btn-primary" aria-label="Logout" (click)="logout()">Logout</button>
   </ng-container>
   <ng-template #registerButton>
-    <button type="menu" class="btn btn-primary" aria-label="Register" routerLink="/register">Register</button>
+    <button type="menu" class="btn btn-primary" aria-label="Register" [routerLink]="routes.REGISTER">Register</button>
   </ng-template>
 </section>

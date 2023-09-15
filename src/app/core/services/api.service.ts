@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/shared/interfaces/user';
 import { environment } from 'src/environments/environment.development';
+import { ApiRoutesEnum } from '../enums/api-routes.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class ApiService {
    * @returns The user found for the given *id*
    */
   public findUser(id: number): Observable<User> {
-    return this.http.get<User>(`${environment.serverEndpoint}/public/v2/users/${id}`);
+    return this.http.get<User>(`${environment.serverEndpoint}/${ApiRoutesEnum.USER}/${id}`);
   }
 
   /**
@@ -26,7 +27,7 @@ export class ApiService {
    * @returns The registered user, with its newly generated *id*
    */
   public registerUser(user: Omit<User, 'id'>): Observable<User> {
-    return this.http.post<User>(`${environment.serverEndpoint}/public/v2/users/`, user)
+    return this.http.post<User>(`${environment.serverEndpoint}/${ApiRoutesEnum.USER}`, user)
   }
 
   /**
@@ -35,7 +36,7 @@ export class ApiService {
    * @returns The updated user
    */
   public updateUser(user: Partial<User>): Observable<User> {
-    return this.http.put<User>(`${environment.serverEndpoint}/public/v2/users/${user.id}`, user);
+    return this.http.put<User>(`${environment.serverEndpoint}/${ApiRoutesEnum.USER}/${user.id}`, user);
   }
 
 }

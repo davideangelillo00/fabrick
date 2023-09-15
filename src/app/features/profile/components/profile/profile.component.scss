@@ -9,12 +9,12 @@
   }
 
   &__fields {
-    gap: 2em;
     align-items: flex-start;
     min-width: 40%;
 
     &--desktop {
       margin-top: 1.5em;
+      justify-content: center;
     }
   }
 }
