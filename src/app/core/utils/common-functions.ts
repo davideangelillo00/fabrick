@@ -16,6 +16,5 @@ export function getGenders(): Select[] {
   return [
     {text: 'Male', value: 'male' as UserGender},
     {text: 'Female', value: 'female' as UserGender},
-    {text: 'Other', value: 'other' as UserGender},
   ];
 }

@@ -53,7 +53,7 @@
       </button>
       <button class="btn btn-primary edit-button" type="button" aria-label="Save" [disabled]="form.invalid"
         [attr.aria-disabled]="form.invalid"
-        [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}" (click)="toggleEdit()">
+        [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}" (click)="updateUser()">
         <i class="edit-button__icon bi bi-floppy"></i>
         Save
       </button>

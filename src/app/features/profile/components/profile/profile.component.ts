@@ -71,6 +71,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.isEdit = !this.isEdit;
   }
 
+  public updateUser(): void {
+    this.apiService.updateUser({id: this.user.id, ...this.form.value} as Partial<User>).subscribe((response: User) => {
+      this.storeService.setLoggedUser(response);
+      this.isEdit = false;
+    });
+  }
+
   public toggleProfileEnabled(): void {
     this.apiService.updateUser({
       id: this.user.id,
