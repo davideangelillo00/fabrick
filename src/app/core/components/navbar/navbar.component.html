@@ -6,7 +6,7 @@
   </button>
   <ng-container *ngIf="storeService.loggedUser$ | async; else registerButton">
     <button type="menu" class="btn btn-primary" aria-label="Profile" routerLink="/profile">My Profile</button>
-    <button type="menu" class="btn btn-primary" aria-label="Log-Off" (click)="logoff()">Log Off</button>
+    <button type="menu" class="btn btn-primary" aria-label="Logout" (click)="logout()">Logout</button>
   </ng-container>
   <ng-template #registerButton>
     <button type="menu" class="btn btn-primary" aria-label="Register" routerLink="/register">Register</button>

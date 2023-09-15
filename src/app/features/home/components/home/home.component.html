@@ -6,7 +6,7 @@
     <div class="actions gap-2" [ngClass]="{'w-100': isMobile, 'd-flex-col': isMobile, 'd-flex-row': !isMobile}">
       <ng-container *ngIf="storeService.loggedUser$ | async; else registerButton">
         <button class="btn btn-primary" type="button" routerLink="/profile" aria-label="Profile">Profile</button>
-        <button class="btn btn-primary" type="button" aria-label="Log-off" (click)="logoff()">Log off</button>
+        <button class="btn btn-primary" type="button" aria-label="Logout" (click)="logout()">Logout</button>
       </ng-container>
       <ng-template #registerButton>
         <button class="btn btn-primary" type="button" routerLink="/register" aria-label="Register">Register</button>

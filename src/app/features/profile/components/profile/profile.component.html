@@ -1,4 +1,4 @@
-<div class="user-details" [ngClass]="{'d-flex-col': isMobile, 'd-flex-row justify-content-space-bt align-items-start': !isMobile}">
+<div class="user-details" [ngClass]="{'d-flex-col': isMobile, 'd-flex-row justify-content-space-bt align-items-start': !isMobile}" *ngIf="user">
   <div class="d-flex-col gap-1em">
     <img src="/assets/user.png" alt="User icon" aria-details="User icon" class="user-details__icon">
     <button class="btn btn-primary edit-button" type="button" aria-label="Disable profile"

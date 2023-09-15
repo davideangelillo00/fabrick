@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { StoreService } from 'src/app/core/services/store.service';
 
@@ -17,12 +17,14 @@ export class HomeComponent {
 
   constructor(
     public storeService: StoreService,
-    private deviceDetectorService: DeviceDetectorService
+    private deviceDetectorService: DeviceDetectorService,
+    private router: Router
   ) {
     this.isMobile = this.deviceDetectorService.isMobile();
   }
 
-  public logoff(): void {
+  public logout(): void {
     this.storeService.setLoggedUser(null);
+    this.router.navigate(['/']);
   }
 }

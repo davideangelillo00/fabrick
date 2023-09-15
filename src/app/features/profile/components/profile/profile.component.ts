@@ -18,7 +18,7 @@ import { Select } from 'src/app/shared/interfaces/select';
   imports: [CommonModule, FormModule, ReactiveFormsModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  providers: [ApiService, StoreService]
+  providers: [ApiService]
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   public user!: User;
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     /** ASSERTION:
      *  we assume that the user-information in the store.service are incomplete, so that we
      *  would need to fetch more user data with the findUser method (data will be the same due to the mocked service)
-     * */
+     */
     this.retrieveUserData();
   }
 

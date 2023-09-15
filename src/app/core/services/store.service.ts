@@ -9,16 +9,6 @@ export class StoreService {
   private _loggedUser$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   private _loader$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-  constructor () {
-    this.setLoggedUser({
-      email: 'pippo@pluto.com',
-      gender: 'female',
-      name: 'Harry Potter',
-      status: 'inactive',
-      id: 5151479
-    })
-  }
-
   /**
    * Current logged user
    */
@@ -32,7 +22,7 @@ export class StoreService {
 
   /**
    * Set logged user
-   * @param user user data, set to null to log off
+   * @param user user data, set to null to Logout
    */
   public setLoggedUser(user: User | null) {
     this._loggedUser$.next(user);
