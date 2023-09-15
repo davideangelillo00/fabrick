@@ -1,11 +1,23 @@
-<div class="user-details" [ngClass]="{'d-flex-col': isMobile, 'd-flex-row justify-content-space-bt align-items-center': !isMobile}">
-  <img src="/assets/user.png" alt="User icon" aria-details="User icon" class="user-details__icon">
-  <div class="user-details__fields" [ngClass]="isMobile ? 'd-flex-col align-items-start gap-1em mt-1em' : 'd-flex-row justify-content-space-bt'">
-    <ng-container *ngIf="!isEdit">
-      <p class="fields__label">
-        <strong [ngClass]="{'fields__label--block': !isMobile}">ID: </strong>
-        <span>{{user.id}}</span>
-      </p>
+<div class="user-details" [ngClass]="{'d-flex-col': isMobile, 'd-flex-row justify-content-space-bt align-items-start': !isMobile}">
+  <div class="d-flex-col gap-1em">
+    <img src="/assets/user.png" alt="User icon" aria-details="User icon" class="user-details__icon">
+    <button class="btn btn-primary edit-button" type="button" aria-label="Disable profile"
+      [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}" (click)="toggleProfileEnabled()" *ngIf="!isDisabledProfile">
+      <i class="edit-button__icon bi bi-exclamation-triangle"></i>
+      Disable my profile
+    </button>
+    <button class="btn btn-primary edit-button" type="button" aria-label="Enable profile"
+      [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}" (click)="toggleProfileEnabled()" *ngIf="isDisabledProfile">
+      <i class="edit-button__icon bi bi-check2-square"></i>
+      Enable my profile
+    </button>
+  </div>
+  <form [formGroup]="form" class="user-details__fields" [ngClass]="isMobile ? 'd-flex-col align-items-start gap-1em mt-1em' : 'd-flex-row justify-content-space-bt user-details__fields--desktop'">
+    <p class="fields__label">
+      <strong [ngClass]="{'fields__label--block': !isMobile}">ID: </strong>
+      <span>{{user.id}}</span>
+    </p>
+    <ng-container *ngIf="!isEdit; else editMode">
       <p class="fields__label">
         <strong [ngClass]="{'fields__label--block': !isMobile}">Name: </strong>
         <span>{{user.name}}</span>
@@ -18,14 +30,40 @@
         <strong [ngClass]="{'fields__label--block': !isMobile}">Gender: </strong>
         <span>{{user.gender}}</span>
       </p>
-      <p class="fields__label">
-        <strong [ngClass]="{'fields__label--block': !isMobile}">Status: </strong>
-        <span>{{user.status}}</span>
-      </p>
     </ng-container>
+    <ng-template #editMode>
+      <fb-input formControlName="name" [label]="'Name'" [placeholder]="'Type here'" [isRequired]="true"
+        [errorTooltip]="fullNameErrorLabel"></fb-input>
+      <fb-input formControlName="email" [label]="'Email'" [placeholder]="'your.email@email.com'" [isRequired]="true"
+        [errorTooltip]="emailErrorLabel"></fb-input>
+      <fb-select formControlName="gender" [label]="'Gender'" [placeholder]="'Select your gender'" [isRequired]="true" [options]="genders"
+        formControlName="gender"></fb-select>
+    </ng-template>
+    <p class="fields__label">
+      <strong [ngClass]="{'fields__label--block': !isMobile}">Status: </strong>
+      <span>{{user.status}}</span>
+    </p>
+  </form>
+  <div class="actions d-flex-row gap-1em">
+    <ng-container *ngIf="isEdit; else editButton">
+      <button class="btn btn-primary edit-button" type="button" aria-label="Cancel"
+        [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}" (click)="toggleEdit()">
+        <i class="edit-button__icon bi bi-trash"></i>
+        Cancel
+      </button>
+      <button class="btn btn-primary edit-button" type="button" aria-label="Save" [disabled]="form.invalid"
+        [attr.aria-disabled]="form.invalid"
+        [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}" (click)="toggleEdit()">
+        <i class="edit-button__icon bi bi-floppy"></i>
+        Save
+      </button>
+    </ng-container>
+    <ng-template #editButton>
+      <button class="btn btn-primary edit-button" type="button" aria-label="Edit profile"
+        [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}" (click)="toggleEdit()">
+        <i class="edit-button__icon bi bi-pencil-square"></i>
+        Edit
+      </button>
+    </ng-template>
   </div>
-  <button class="btn btn-primary edit-button" type="button" aria-label="Edit profile" [ngClass]="{'ml-1em': !isMobile, 'w-100 mt-1em': isMobile}">
-    <i class="bi bi-pencil-square edit-button__icon"></i>
-    Edit
-  </button>
 </div>

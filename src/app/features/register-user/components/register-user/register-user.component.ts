@@ -5,7 +5,7 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angula
 import { RegisterForm } from '../../interfaces/register-form';
 import { Select } from 'src/app/shared/interfaces/select';
 import { User, UserGender } from 'src/app/shared/interfaces/user';
-import { emailValidator, fullNameValidator } from 'src/app/core/utils/common-functions';
+import { emailValidator, fullNameValidator, getGenders } from 'src/app/core/utils/common-functions';
 import { ApiService } from 'src/app/core/services/api.service';
 import { StoreService } from 'src/app/core/services/store.service';
 import { RegistrationErrorsEnum } from '../../enums/registration-errors.enum';
@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterUserComponent {
   public form: FormGroup<RegisterForm>;
-  public genders: Select[];
+  public genders: Select[] = getGenders();
 
   public get fullNameErrorLabel(): string | null {
     return this.form?.controls.name.errors?.['fullNameValidation'] ? RegistrationErrorsEnum.INVALID_FULL_NAME : null;
@@ -36,11 +36,6 @@ export class RegisterUserComponent {
     private router: Router
   ) {
     this.form = this.initForm();
-    this.genders = [
-      {text: 'Male', value: 'male' as UserGender},
-      {text: 'Female', value: 'female' as UserGender},
-      {text: 'Other', value: 'other' as UserGender},
-    ];
   }
 
   public register(): void {

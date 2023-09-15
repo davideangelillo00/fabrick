@@ -98,4 +98,8 @@ i {
   &:hover {
     background-color: $secondary-color;
   }
+
+  &[disabled] {
+    background-color: $disabled-accent;
+  }
 }

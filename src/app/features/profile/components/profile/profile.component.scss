@@ -10,8 +10,12 @@
 
   &__fields {
     gap: 2em;
-    align-items: center;
+    align-items: flex-start;
     min-width: 40%;
+
+    &--desktop {
+      margin-top: 1.5em;
+    }
   }
 }
 
@@ -20,6 +24,7 @@
     margin: 0;
 
     &--block {
+      margin-bottom: 1em;
       display: block;
     }
   }
@@ -34,4 +39,8 @@
       background-color: transparent;
     }
   }
+}
+
+.actions {
+  margin-top: 2.5em;
 }
